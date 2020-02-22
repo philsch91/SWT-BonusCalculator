@@ -21,4 +21,11 @@ public class Bonus extends Object {
         Bonus bonus = (Bonus) o;
         return Objects.equals(value, bonus.value);
     }
+
+    @Override
+    public String toString() {
+        return "Bonus{" +
+                "value=" + value +
+                '}';
+    }
 }

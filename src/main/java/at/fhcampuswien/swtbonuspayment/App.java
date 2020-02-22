@@ -14,7 +14,12 @@ public class App
 
         Employee e1 = new Employee();
         Calendar entryDate = Calendar.getInstance();
-        entryDate.set(2010,1,1);
-        e1.getBonus();
+        entryDate.set(1946,1,1);
+
+        try {
+            e1.setEntryDate(entryDate);
+        } catch (IllegalArgumentException ex){
+            System.out.println("illegal argument");
+        }
     }
 }
