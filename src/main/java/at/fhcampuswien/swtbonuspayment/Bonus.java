@@ -5,6 +5,10 @@ import java.util.Objects;
 public class Bonus extends Object {
     Double value;
 
+    public Bonus(double value){
+        this.value = value;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(value);
