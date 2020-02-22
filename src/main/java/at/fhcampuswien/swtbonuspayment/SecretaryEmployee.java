@@ -14,8 +14,6 @@ public class SecretaryEmployee extends Employee {
         Bonus bonus = super.getBonus();
         bonus.value = bonus.value * 2;
 
-        System.out.println(bonus);
-
         return bonus;
     }
 }

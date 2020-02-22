@@ -8,43 +8,42 @@ import static org.junit.Assert.*;
 
 public class EmployeeTest {
 
-
     @Test
-    public void test_getBonus() {
-        Employee e1 = new Employee();
+    public void testEmployee_getBonus() {
+        Employee employee = new Employee();
         Calendar entryDate = Calendar.getInstance();
         entryDate.set(2020, 1,1);
-        e1.setEntryDate(entryDate);
+        employee.setEntryDate(entryDate);
 
-        Bonus bonus = e1.getBonus();
+        Bonus bonus = employee.getBonus();
         assertEquals((double)0, (double)bonus.value, 0);
     }
 
     @Test
-    public void test2_getBonus() {
-        Employee e2 = new Employee();
+    public void testEmployee_2years_getBonus() {
+        Employee employee = new Employee();
         Calendar entryDate = Calendar.getInstance();
         entryDate.set(2017, 1,1);
-        e2.setEntryDate(entryDate);
+        employee.setEntryDate(entryDate);
 
-        Bonus bonus = e2.getBonus();
+        Bonus bonus = employee.getBonus();
         assertEquals((double)50, (double)bonus.value, 0);
     }
 
     @Test
-    public void test3_getBonus() {
-        Employee e3 = new Employee();
+    public void testEmployee_4years_getBonus() {
+        Employee employee = new Employee();
         Calendar entryDate = Calendar.getInstance();
         entryDate.set(2015, 1,1);
-        e3.setEntryDate(entryDate);
+        employee.setEntryDate(entryDate);
 
-        Bonus bonus = e3.getBonus();
+        Bonus bonus = employee.getBonus();
         System.out.println(bonus.toString());
         assertEquals((double)80, (double)bonus.value, 0);
     }
 
     @Test
-    public void test4_getBonus() {
+    public void testSecretaryEmployee_4years_getBonus() {
         Employee secretaryEmployee = new SecretaryEmployee();
         Calendar entryDate = Calendar.getInstance();
         entryDate.set(2015, 1,1);
@@ -55,18 +54,18 @@ public class EmployeeTest {
     }
 
     @Test
-    public void test5_getBonus() {
-        Employee e4 = new Employee();
+    public void testEmployee_10years_getBonus() {
+        Employee employee = new Employee();
         Calendar entryDate = Calendar.getInstance();
         entryDate.set(2009, 1,1);
-        e4.setEntryDate(entryDate);
+        employee.setEntryDate(entryDate);
 
-        Bonus bonus = e4.getBonus();
+        Bonus bonus = employee.getBonus();
         assertEquals((double)120, (double)bonus.value, 0);
     }
 
     @Test
-    public void test6_getBonus() {
+    public void testPostOfficeEmployee_10years_getBonus() {
         Employee postOfficeEmployee = new PostOfficeEmployee();
         Calendar entryDate = Calendar.getInstance();
         entryDate.set(2009, 1,1);
@@ -77,7 +76,22 @@ public class EmployeeTest {
     }
 
     @Test
-    public void test7_getBonus() {
+    public void testEmployee_legalEntryDate() {
+        Employee employee = new Employee();
+        Calendar entryDate = Calendar.getInstance();
+        entryDate.set(1980, 1,1);
+        boolean isValid = true;
+        try {
+            employee.setEntryDate(entryDate);
+        } catch (IllegalArgumentException ex){
+            isValid = false;
+        }
+
+        assertEquals(true, isValid);
+    }
+
+    @Test
+    public void testEmployee_illegalEntryDate() {
         Employee employee = new Employee();
         Calendar entryDate = Calendar.getInstance();
         entryDate.set(1910, 1,1);

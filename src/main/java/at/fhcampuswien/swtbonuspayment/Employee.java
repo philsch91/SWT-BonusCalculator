@@ -2,6 +2,7 @@ package at.fhcampuswien.swtbonuspayment;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 public class Employee {
     private Calendar entryDate = null;
@@ -15,50 +16,54 @@ public class Employee {
             return null;
         }
 
-        Date now = Calendar.getInstance().getTime();
-        now.setYear(now.getYear() - 2);
+        //less than 2 years
 
-        System.out.println(now);
-        //System.out.println(now.getYear());
+        /**
+         * Date solution
+        Date limitDate = Calendar.getInstance().getTime();
+        limitDate.setYear(limitDate.getYear() - 2);
 
-        Calendar c = Calendar.getInstance();
-        c.set(now.getYear() + 1900, now.getMonth(), now.getDay());
-        //c.setTime(now);
+        Calendar limitCal = Calendar.getInstance();
 
-        System.out.println(this.getEntryDate().getTime());
-        System.out.println(c.getTime());
+        ////limitDate.setYear(limitDate.getYear() + 1900);
+        ////limitCal.set(limitDate.getYear(), limitDate.getMonth(), limitDate.getDay());
+        limitCal.setTime(limitDate);
 
-        if(this.getEntryDate().compareTo(c) > 0){
+        //System.out.println(this.getEntryDate().getTime());
+        //System.out.println(limitCal.getTime());
+        */
+
+        Calendar limitCal = Calendar.getInstance(TimeZone.getDefault());
+        limitCal.add(Calendar.YEAR, -2);
+
+        if(this.getEntryDate().compareTo(limitCal) > 0){
             return new Bonus(0);
         }
 
-        now = Calendar.getInstance().getTime();
-        //System.out.println(now);
-        now.setYear(now.getYear() - 10);
-        c = Calendar.getInstance();
-        c.set(now.getYear() + 1900, now.getMonth(), now.getDay());
+        //more than 10 years
 
-        if(this.getEntryDate().compareTo(c) < 0){
+        limitCal = Calendar.getInstance(TimeZone.getDefault());
+        limitCal.add(Calendar.YEAR, -10);
+
+        if(this.getEntryDate().compareTo(limitCal) < 0){
             return new Bonus(120);
         }
 
-        now = Calendar.getInstance().getTime();
-        //System.out.println(now);
-        now.setYear(now.getYear() - 4);
-        c = Calendar.getInstance();
-        c.set(now.getYear() + 1900, now.getMonth(), now.getDay());
+        //more than 4 years
 
-        if(this.getEntryDate().compareTo(c) < 0){
+        limitCal = Calendar.getInstance(TimeZone.getDefault());
+        limitCal.add(Calendar.YEAR, -4);
+
+        if(this.getEntryDate().compareTo(limitCal) < 0){
             return new Bonus(80);
         }
 
-        now = Calendar.getInstance().getTime();
-        //System.out.println(now);
-        now.setYear(now.getYear() - 2);
-        c = Calendar.getInstance();
-        c.set(now.getYear() + 1900, now.getMonth(), now.getDay());
+        //more than 2 years
 
-        if(this.getEntryDate().compareTo(c) < 0){
+        limitCal = Calendar.getInstance(TimeZone.getDefault());
+        limitCal.add(Calendar.YEAR, -2);
+
+        if(this.getEntryDate().compareTo(limitCal) < 0){
             return new Bonus(50);
         }
 
@@ -70,13 +75,13 @@ public class Employee {
     }
 
     public void setEntryDate(Calendar entryDate) {
-        Date date = Calendar.getInstance().getTime();
-        date.setYear(date.getYear() - 75);
+        Calendar limitCal = Calendar.getInstance(TimeZone.getDefault());
+        limitCal.add(Calendar.YEAR, -75);
 
-        System.out.println(entryDate.getTime());
-        System.out.println(date);
+        //System.out.println(entryDate.getTime());
+        //System.out.println(limitCal.getTime());
 
-        if(entryDate.getTime().compareTo(date) < 0){
+        if(entryDate.compareTo(limitCal) < 0){
             throw new IllegalArgumentException("illegal argument");
         }
 
