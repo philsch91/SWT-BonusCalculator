@@ -1,7 +1,4 @@
-package at.fhcampuswien.swtbonuspayment;
-
-import java.util.Calendar;
-import java.util.Date;
+package at.fhcampuswien.swtbonuscalculator;
 
 public class SecretaryEmployee extends Employee {
 

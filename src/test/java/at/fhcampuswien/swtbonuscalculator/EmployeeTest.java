@@ -1,4 +1,4 @@
-package at.fhcampuswien.swtbonuspayment;
+package at.fhcampuswien.swtbonuscalculator;
 
 import org.junit.Test;
 

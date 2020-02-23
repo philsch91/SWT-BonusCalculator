@@ -1,7 +1,6 @@
-package at.fhcampuswien.swtbonuspayment;
+package at.fhcampuswien.swtbonuscalculator;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.TimeZone;
 
 public class Employee {
